@@ -1,6 +1,20 @@
 import { Command } from 'commander';
-import { embedResume, formatVitaeFlowFilename } from '@vitaeflow/sdk';
+import { embedResume } from '@vitaeflow/sdk';
 import { readPdf, readJson, writePdf, success, exitWithError } from '../utils.js';
+
+const VITAEFLOW_DEFAULT_SUFFIX = '.vf.pdf';
+
+function getDefaultOutputPath(pdfPath: string): string {
+  if (pdfPath.toLowerCase().endsWith(VITAEFLOW_DEFAULT_SUFFIX)) {
+    return pdfPath;
+  }
+
+  if (pdfPath.toLowerCase().endsWith('.pdf')) {
+    return pdfPath.slice(0, -4) + VITAEFLOW_DEFAULT_SUFFIX;
+  }
+
+  return pdfPath + VITAEFLOW_DEFAULT_SUFFIX;
+}
 
 export const embedCommand = new Command('embed')
   .description('Embed a VitaeFlow JSON resume into a PDF.')
@@ -29,7 +43,7 @@ export const embedCommand = new Command('embed')
       exitWithError((err as Error).message);
     }
 
-    const outputPath = opts.output ?? formatVitaeFlowFilename(pdfPath);
+    const outputPath = opts.output ?? getDefaultOutputPath(pdfPath);
 
     try {
       await writePdf(outputPath, result);

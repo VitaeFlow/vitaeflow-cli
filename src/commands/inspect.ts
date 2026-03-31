@@ -1,7 +1,7 @@
 import { Command } from 'commander';
-import { isVitaeFlowPdf, extractResume, isVitaeFlowFilename } from '@vitaeflow/sdk';
+import { isVitaeFlowPdf, extractResume } from '@vitaeflow/sdk';
 import pc from 'picocolors';
-import { readPdf, success, fail, warn, label, exitWithError } from '../utils.js';
+import { readPdf, fail, warn, label, exitWithError } from '../utils.js';
 
 export const inspectCommand = new Command('inspect')
   .description('Inspect a PDF to check if it contains VitaeFlow data.')
@@ -22,12 +22,9 @@ export const inspectCommand = new Command('inspect')
       exitWithError(`Inspection failed: ${(err as Error).message}`);
     }
 
-    const filenameOk = isVitaeFlowFilename(pdfPath);
-
     if (opts.json) {
       const result: Record<string, unknown> = {
         vitaeflow: hasVitaeFlow,
-        filename: { path: pdfPath, valid: filenameOk },
       };
 
       if (hasVitaeFlow) {
@@ -51,7 +48,6 @@ export const inspectCommand = new Command('inspect')
     console.log();
     label('File', pdfPath);
     label('VitaeFlow', hasVitaeFlow ? pc.green('Yes') : pc.red('No'));
-    label('Filename', filenameOk ? pc.green('.vf.pdf ✓') : pc.yellow('Missing .vf.pdf extension'));
 
     if (!hasVitaeFlow) {
       console.log();

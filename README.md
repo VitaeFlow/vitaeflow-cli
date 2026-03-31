@@ -49,7 +49,7 @@ vitaeflow embed cv.pdf resume.json -o output.pdf
 # ✓ Embedded resume → output.pdf
 ```
 
-The output filename defaults to `.vf.pdf` (e.g. `cv.pdf` → `cv.vf.pdf`). The resume is validated in strict mode before embedding — if invalid, the command fails with details.
+The output filename defaults to the recommended `.vf.pdf` suffix (e.g. `cv.pdf` → `cv.vf.pdf`). The resume is validated in strict mode before embedding — if invalid, the command fails with details.
 
 Options:
 
@@ -83,7 +83,6 @@ vitaeflow inspect cv.vf.pdf
 #
 # File:      cv.vf.pdf
 # VitaeFlow: Yes
-# Filename:  .vf.pdf ✓
 # Valid:     Yes
 # Version:   0.1
 # Profile:   standard
@@ -93,7 +92,6 @@ vitaeflow inspect plain.pdf
 #
 # File:      plain.pdf
 # VitaeFlow: No
-# Filename:  Missing .vf.pdf extension
 #
 # ✗ No VitaeFlow data found in this PDF.
 ```
@@ -120,7 +118,7 @@ vitaeflow validate resume.json --json || echo "Resume is invalid"
 
 ## What is VitaeFlow?
 
-VitaeFlow is an open standard for embedding structured JSON resume data in PDF files. A `.vf.pdf` file is a normal PDF readable by anyone, but it also contains machine-readable structured data (for ATS, job boards, HR tools).
+VitaeFlow is an open standard for embedding structured JSON resume data in PDF files. A VitaeFlow PDF is a normal PDF readable by anyone, but it also contains machine-readable structured data (for ATS, job boards, HR tools). The `.vf.pdf` suffix is recommended, not required.
 
 - [Specification](https://github.com/VitaeFlow/vitaeflow-spec)
 - [JavaScript SDK](https://github.com/VitaeFlow/vitaeflow-js)
