@@ -1,0 +1,18 @@
+{
+  "version": "0.1",
+  "profile": "standard",
+  "lang": "fr",
+  "basics": {
+    "givenName": "Marie",
+    "familyName": "Laurent",
+    "headline": "Développeuse Full Stack",
+    "email": "marie.laurent@example.com"
+  },
+  "work": [
+    {
+      "organization": "TechCorp",
+      "position": "Lead Developer",
+      "startDate": "2021-03"
+    }
+  ]
+}
