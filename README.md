@@ -1,8 +1,11 @@
 # vitaeflow
 
+[![npm version](https://img.shields.io/npm/v/vitaeflow.svg)](https://www.npmjs.com/package/vitaeflow)
+[![license](https://img.shields.io/npm/l/vitaeflow.svg)](LICENSE)
+
 CLI for the [VitaeFlow](https://vitaeflow.org) open standard — validate, embed, extract, and inspect structured resumes in PDFs.
 
-## Installation
+## Install
 
 ```bash
 npm install -g vitaeflow
@@ -12,6 +15,15 @@ Or use directly with `npx`:
 
 ```bash
 npx vitaeflow <command>
+```
+
+## Quick start
+
+```bash
+vitaeflow validate resume.json            # Validate a JSON resume
+vitaeflow embed cv.pdf resume.json        # Embed data into a PDF → cv.vf.pdf
+vitaeflow extract cv.vf.pdf               # Extract JSON from a PDF
+vitaeflow inspect cv.vf.pdf               # Check if a PDF contains VitaeFlow data
 ```
 
 ## Commands
@@ -32,8 +44,6 @@ vitaeflow validate bad.json
 #   / Missing required property: basics
 ```
 
-Options:
-
 | Flag | Description | Default |
 |------|-------------|---------|
 | `-m, --mode <mode>` | `strict` or `tolerant` | `strict` |
@@ -49,9 +59,7 @@ vitaeflow embed cv.pdf resume.json -o output.pdf
 # ✓ Embedded resume → output.pdf
 ```
 
-The output filename defaults to the recommended `.vf.pdf` suffix (e.g. `cv.pdf` → `cv.vf.pdf`). The resume is validated in strict mode before embedding — if invalid, the command fails with details.
-
-Options:
+The resume is validated in strict mode before embedding. Output defaults to the `.vf.pdf` suffix (e.g. `cv.pdf` → `cv.vf.pdf`).
 
 | Flag | Description | Default |
 |------|-------------|---------|
@@ -66,10 +74,6 @@ vitaeflow extract cv.vf.pdf
 vitaeflow extract cv.vf.pdf -o resume.json
 # ✓ Extracted resume → resume.json
 ```
-
-Outputs the VitaeFlow JSON to stdout by default. Use `-o` to write to a file.
-
-Options:
 
 | Flag | Description | Default |
 |------|-------------|---------|
@@ -96,8 +100,6 @@ vitaeflow inspect plain.pdf
 # ✗ No VitaeFlow data found in this PDF.
 ```
 
-Options:
-
 | Flag | Description |
 |------|-------------|
 | `--json` | Output result as JSON |
@@ -110,19 +112,18 @@ Options:
 | `1` | Failure (invalid, not found) |
 | `2` | Error (file not readable, unexpected crash) |
 
-Use `--json` with exit codes for CI/CD pipelines:
-
 ```bash
 vitaeflow validate resume.json --json || echo "Resume is invalid"
 ```
 
-## What is VitaeFlow?
+## Ecosystem
 
-VitaeFlow is an open standard for embedding structured JSON resume data in PDF files. A VitaeFlow PDF is a normal PDF readable by anyone, but it also contains machine-readable structured data (for ATS, job boards, HR tools). The `.vf.pdf` suffix is recommended, not required.
-
-- [Specification](https://github.com/VitaeFlow/vitaeflow-spec)
-- [JavaScript SDK](https://github.com/VitaeFlow/vitaeflow-js)
+| Project | Description |
+|---------|-------------|
+| [VitaeFlow Spec](https://github.com/VitaeFlow/vitaeflow-spec) | JSON schema and PDF embedding standard |
+| [@vitaeflow/sdk](https://github.com/VitaeFlow/vitaeflow-js) | JavaScript/TypeScript SDK |
+| [vitaeflow.org](https://vitaeflow.org) | Website with interactive tools |
 
 ## License
 
-MIT
+[MIT](LICENSE)
