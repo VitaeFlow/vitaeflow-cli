@@ -31,11 +31,9 @@ export const inspectCommand = new Command('inspect')
         const extracted = await extractResume(pdf);
         if (extracted) {
           result.valid = extracted.validation.valid;
-          result.version = (extracted.resume as Record<string, unknown>)?.version ?? null;
-          result.profile = (extracted.resume as Record<string, unknown>)?.profile ?? null;
-          result.generator = (extracted.resume as Record<string, unknown>)?.meta
-            ? ((extracted.resume as Record<string, unknown>).meta as Record<string, unknown>)?.generator ?? null
-            : null;
+          result.version = extracted.resume?.version ?? null;
+          result.profile = extracted.resume?.profile ?? null;
+          result.generator = extracted.resume?.meta?.generator ?? null;
           result.errors = extracted.validation.errors;
           result.warnings = extracted.validation.warnings;
         }
