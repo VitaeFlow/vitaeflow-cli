@@ -1,5 +1,6 @@
 # vitaeflow
 
+[![CI](https://github.com/VitaeFlow/vitaeflow-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/VitaeFlow/vitaeflow-cli/actions/workflows/ci.yml)
 [![npm version](https://img.shields.io/npm/v/vitaeflow.svg)](https://www.npmjs.com/package/vitaeflow)
 [![license](https://img.shields.io/npm/l/vitaeflow.svg)](LICENSE)
 
