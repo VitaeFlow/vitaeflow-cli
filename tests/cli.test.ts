@@ -103,7 +103,7 @@ describe('extract', () => {
   it('should extract resume JSON from a VitaeFlow PDF', async () => {
     const { stdout } = await run(['extract', VF_PDF]);
     const resume = JSON.parse(stdout);
-    expect(resume.version).toBe('0.1');
+    expect(resume.version).toBe('0.2');
     expect(resume.basics.givenName).toBe('Marie');
   });
 
@@ -125,7 +125,7 @@ describe('inspect', () => {
   it('should detect VitaeFlow data', async () => {
     const { stdout } = await run(['inspect', VF_PDF]);
     expect(stdout).toContain('Yes');
-    expect(stdout).toContain('0.1');
+    expect(stdout).toContain('0.2');
     expect(stdout).toContain('standard');
   });
 

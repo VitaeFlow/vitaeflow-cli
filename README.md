@@ -70,7 +70,7 @@ The resume is validated in strict mode before embedding. Output defaults to the 
 
 ```bash
 vitaeflow extract cv.vf.pdf
-# { "version": "0.1", "profile": "standard", ... }
+# { "version": "0.2", "profile": "standard", ... }
 
 vitaeflow extract cv.vf.pdf -o resume.json
 # ✓ Extracted resume → resume.json
@@ -89,7 +89,7 @@ vitaeflow inspect cv.vf.pdf
 # File:      cv.vf.pdf
 # VitaeFlow: Yes
 # Valid:     Yes
-# Version:   0.1
+# Version:   0.2
 # Profile:   standard
 # Sections:  work, education, skills, languages
 
