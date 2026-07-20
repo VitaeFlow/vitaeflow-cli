@@ -1,6 +1,6 @@
 {
   "name": "vitaeflow",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "CLI for the VitaeFlow open standard — validate, embed, extract, and inspect structured resumes in PDFs.",
   "type": "module",
   "bin": {
@@ -12,7 +12,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@vitaeflow/sdk": "^0.4.0",
+    "@vitaeflow/sdk": "^0.4.1",
     "commander": "^13.1.0",
     "picocolors": "^1.1.1"
   },
